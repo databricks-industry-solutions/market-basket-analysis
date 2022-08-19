@@ -53,7 +53,8 @@ from pyspark.sql import window as w
 # COMMAND ----------
 
 # DBTITLE 1,Create Database
-_ = spark.sql('CREATE DATABASE IF NOT EXISTS instacart')
+_ = spark.sql('DROP DATABASE IF EXISTS instacart CASCADE')
+_ = spark.sql('CREATE DATABASE instacart')
 
 # COMMAND ----------
 
