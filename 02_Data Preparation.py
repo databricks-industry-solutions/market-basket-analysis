@@ -10,7 +10,7 @@
 
 # MAGIC %md ## Introduction 
 # MAGIC 
-# MAGIC Market basket analysis, a variation of associative (affinity) analysis, examines products frequently purchased together.  The rules produced by such analysis capture how the selection of one or more items may indicate prefrences for additional items and would seem to provide a natural basis for the creation of recommendations:
+# MAGIC Market basket analysis, a variation of associative (affinity) analysis, examines products frequently purchased together.  The rules produced by such analysis capture how the selection of one or more items may indicate preferences for additional items and would seem to provide a natural basis for the creation of recommendations:
 # MAGIC 
 # MAGIC <img src='https://brysmiwasb.blob.core.windows.net/demos/images/mba_recommender.png' width=400>
 # MAGIC 

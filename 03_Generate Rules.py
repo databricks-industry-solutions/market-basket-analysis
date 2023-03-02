@@ -97,7 +97,7 @@ model.associationRules.count()
 
 # COMMAND ----------
 
-# MAGIC %md At a 100-occurences minimum, we produce nearly 1.7 million product associations.  We can see those associations here:
+# MAGIC %md At a 100-occurrences minimum, we produce nearly 1.7 million product associations.  We can see those associations here:
 
 # COMMAND ----------
 
