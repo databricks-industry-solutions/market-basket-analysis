@@ -49,13 +49,13 @@ os.environ['kaggle_key'] = dbutils.secrets.get("solution-accelerator-cicd", "kag
 
 # COMMAND ----------
 
-dbutils.fs.rm(f"dbfs:/{config['root_path']}/", True)
-dbutils.fs.mv("file:/databricks/driver/instacart_download/aisles.csv", f"dbfs:/{config['root_path']}/bronze/aisles/aisles.csv")
-dbutils.fs.mv("file:/databricks/driver/instacart_download/departments.csv", f"dbfs:/{config['root_path']}/bronze/departments/departments.csv")
-dbutils.fs.mv("file:/databricks/driver/instacart_download/order_products__prior.csv", f"dbfs:/{config['root_path']}/bronze/order_products/order_products__prior.csv")
-dbutils.fs.mv("file:/databricks/driver/instacart_download/order_products__train.csv", f"dbfs:/{config['root_path']}/bronze/order_products/order_products__train.csv")
-dbutils.fs.mv("file:/databricks/driver/instacart_download/orders.csv", f"dbfs:/{config['root_path']}/bronze/orders/orders.csv")
-dbutils.fs.mv("file:/databricks/driver/instacart_download/products.csv", f"dbfs:/{config['root_path']}/bronze/products/products.csv")
+dbutils.fs.rm(f"dbfs:{config['root_path']}/", True)
+dbutils.fs.mv("file:/databricks/driver/instacart_download/aisles.csv", f"dbfs:{config['root_path']}/bronze/aisles/aisles.csv")
+dbutils.fs.mv("file:/databricks/driver/instacart_download/departments.csv", f"dbfs:{config['root_path']}/bronze/departments/departments.csv")
+dbutils.fs.mv("file:/databricks/driver/instacart_download/order_products__prior.csv", f"dbfs:{config['root_path']}/bronze/order_products/order_products__prior.csv")
+dbutils.fs.mv("file:/databricks/driver/instacart_download/order_products__train.csv", f"dbfs:{config['root_path']}/bronze/order_products/order_products__train.csv")
+dbutils.fs.mv("file:/databricks/driver/instacart_download/orders.csv", f"dbfs:{config['root_path']}/bronze/orders/orders.csv")
+dbutils.fs.mv("file:/databricks/driver/instacart_download/products.csv", f"dbfs:{config['root_path']}/bronze/products/products.csv")
 
 # COMMAND ----------
 
