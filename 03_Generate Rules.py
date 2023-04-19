@@ -130,11 +130,11 @@ display(
     .format('delta')
     .mode('overwrite')
     .option('overwriteSchema', 'true')
-    .save( config['mount_point'] + '/tmp/freq_item_sets' )
+    .save( config['root_path'] + '/tmp/freq_item_sets' )
   )
 
 # retrieve frequent items sets to dataframe
-freq_item_sets = spark.table('DELTA.`{0}`'.format(config['mount_point'] + '/tmp/freq_item_sets'))
+freq_item_sets = spark.table('DELTA.`{0}`'.format(config['root_path'] + '/tmp/freq_item_sets'))
 
 # display items in set
 display(freq_item_sets)
@@ -156,11 +156,11 @@ display(freq_item_sets)
       .format('delta')
       .mode('overwrite')
       .option('overwriteSchema', 'true')
-      .save( config['mount_point'] + '/tmp/assoc_rules')
+      .save( config['root_path'] + '/tmp/assoc_rules')
   )
 
 # retrieve association rules to dataframe
-assoc_rules = spark.table('DELTA.`{0}`'.format(config['mount_point'] + '/tmp/assoc_rules'))
+assoc_rules = spark.table('DELTA.`{0}`'.format(config['root_path'] + '/tmp/assoc_rules'))
 
 # COMMAND ----------
 
@@ -279,11 +279,11 @@ model = fpGrowth.fit(item_sets)
     .format('delta')
     .mode('overwrite')
     .option('overwriteSchema', 'true')
-    .save( config['mount_point'] + '/tmp/freq_item_sets' )
+    .save( config['root_path'] + '/tmp/freq_item_sets' )
   )
 
 # retrieve frequent items sets to dataframe
-freq_item_sets = spark.table('DELTA.`{0}`'.format(config['mount_point'] + '/tmp/freq_item_sets'))
+freq_item_sets = spark.table('DELTA.`{0}`'.format(config['root_path'] + '/tmp/freq_item_sets'))
 
 # persist association rules to disk
 (
@@ -295,11 +295,11 @@ freq_item_sets = spark.table('DELTA.`{0}`'.format(config['mount_point'] + '/tmp/
       .format('delta')
       .mode('overwrite')
       .option('overwriteSchema', 'true')
-      .save( config['mount_point'] + '/tmp/assoc_rules')
+      .save( config['root_path'] + '/tmp/assoc_rules')
   )
 
 # retrieve association rules to dataframe
-assoc_rules = spark.table('DELTA.`{0}`'.format(config['mount_point'] + '/tmp/assoc_rules'))
+assoc_rules = spark.table('DELTA.`{0}`'.format(config['root_path'] + '/tmp/assoc_rules'))
 
 # COMMAND ----------
 

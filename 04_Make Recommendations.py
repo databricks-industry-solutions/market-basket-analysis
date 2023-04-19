@@ -144,10 +144,10 @@ recommendations = (
     )
 
 # persist recommendations for evaluation
-recommendations.write.format('delta').mode('overwrite').option('overwriteSchema','true').save(config['mount_point'] + '/tmp/recommendations')
+recommendations.write.format('delta').mode('overwrite').option('overwriteSchema','true').save(config['root_path'] + '/tmp/recommendations')
 
 # present results
-display(spark.table('DELTA.`{0}/tmp/recommendations`'.format(config['mount_point'])))
+display(spark.table('DELTA.`{0}/tmp/recommendations`'.format(config['root_path'])))
 
 # COMMAND ----------
 
@@ -166,7 +166,7 @@ k = 10
 
 display(
   spark
-    .table('DELTA.`{0}/tmp/recommendations`'.format(config['mount_point']))
+    .table('DELTA.`{0}/tmp/recommendations`'.format(config['root_path']))
     .filter(f.expr('rec_rank <= {0}'.format(k))) # get top k recommendations 
     .withColumn('hit', f.expr('case when array_contains(next_products, rec_product) then 1.0 else 0.0 end')) # record a hit if recommended product in collection of next products
     .withColumn('tot_hits', f.expr('sum(hit) over(partition by order_id, position order by rec_rank)')) # calculate cumulative hits by recommendation position
@@ -201,7 +201,7 @@ most_popular_products = (
 # rank products for basket-specific recommendations
 naive_recs = (
     basket_at_position
-     .join( spark.table('DELTA.`{0}/tmp/recommendations`'.format(config['mount_point'])), on=['order_id','position'], how='leftsemi')
+     .join( spark.table('DELTA.`{0}/tmp/recommendations`'.format(config['root_path'])), on=['order_id','position'], how='leftsemi')
      .crossJoin(most_popular_products)
      .filter(f.expr('not array_contains(basket, product_id)')) # product not already in basket
      .withColumn('rec_rank', f.expr('row_number() over(partition by order_id, position order by purchases DESC)'))
@@ -211,7 +211,7 @@ naive_recs = (
 # merge with next_products to enable evaluation
 baskets_with_naive_recs = (
   spark
-    .table('DELTA.`{0}/tmp/recommendations`'.format(config['mount_point']))
+    .table('DELTA.`{0}/tmp/recommendations`'.format(config['root_path']))
     .select('order_id', 'position', 'rec_rank', 'next_products')
     .join( naive_recs, on=['order_id','position','rec_rank'])
     .select('order_id','position','rec_rank','rec_product','next_products')
