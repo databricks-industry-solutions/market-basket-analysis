@@ -19,12 +19,12 @@ if 'config' not in locals():
 # COMMAND ----------
 
 # DBTITLE 1,File Path Configurations
-config['mount_point'] = '/tmp/instacart_market_basket'
-config['orders_files'] = config['mount_point'] + '/bronze/orders'
-config['products_files'] = config['mount_point'] + '/bronze/products'
-config['order_products_files'] = config['mount_point'] + '/bronze/order_products'
-config['departments_files'] = config['mount_point'] + '/bronze/departments'
-config['aisles_files'] = config['mount_point'] + '/bronze/aisles'
+config['root_path'] = '/tmp/instacart_market_basket'
+config['orders_files'] = config['root_path'] + '/bronze/orders'
+config['products_files'] = config['root_path'] + '/bronze/products'
+config['order_products_files'] = config['root_path'] + '/bronze/order_products'
+config['departments_files'] = config['root_path'] + '/bronze/departments'
+config['aisles_files'] = config['root_path'] + '/bronze/aisles'
 
 # COMMAND ----------
 
