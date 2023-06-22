@@ -8,7 +8,7 @@
 # COMMAND ----------
 
 # MAGIC %md 
-# MAGIC Set Kaggle credential configuration values in the block below: You can set up a [secret scope](https://docs.databricks.com/security/secrets/secret-scopes.html) to manage credentials used in notebooks. For the block below, we have manually set up the `solution-accelerator-cicd` secret scope and saved our credentials there for internal testing purposes.
+# MAGIC Set Kaggle credential configuration values in the block below: You can set up a [secret scope](https://docs.databricks.com/security/secrets/secret-scopes.html) to manage credentials used in notebooks. See the `./RUNME` notebook for a guide and script to set up the `solution-accelerator-cicd` secret scope used here.
 
 # COMMAND ----------
 
@@ -22,7 +22,7 @@ os.environ['kaggle_key'] = dbutils.secrets.get("solution-accelerator-cicd", "kag
 # COMMAND ----------
 
 # MAGIC %sh -e
-# MAGIC 
+# MAGIC
 # MAGIC cd /databricks/driver
 # MAGIC rm -rf instacart_download
 # MAGIC mkdir instacart_download
